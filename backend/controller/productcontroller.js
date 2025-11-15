@@ -10,7 +10,7 @@ const newProduct = async (req, res) => {
         let images = []
         if (req.files) {
             req.files.map((v) => {
-                images.push({ fileName: v.filename, url: "http://localhost:4000/uploads/" + v.filename })
+                images.push({ fileName: v.filename, url:process.env.BACKENDPATH + "/uploads/" + v.filename })
             })
         }
         let newProduct = await Product.create({ name, price, category, stock, images, review, rating, discount });
